@@ -1,6 +1,6 @@
 import "~/styles/globals.css";
 
-import { Navbar } from "~/src/app/_components/navbar";
+import { Navbar } from "~/app/_components/navbar";
 
 import { ClerkProvider } from "@clerk/nextjs";
 
