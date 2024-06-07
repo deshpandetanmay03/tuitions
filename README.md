@@ -1,7 +1,8 @@
 # Tuitions App
 ## TODO
-- [ ] deploy
-- [ ] scaffold basic ui
+- [X] deploy
+- [X] scaffold basic ui
+- [ ] Tidy up UI
 - [ ] set up db
 - [ ] attach db to app
 - [ ] add auth
