@@ -4,7 +4,7 @@ export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
 
-    const classes = await db.query.classes.findMany();
+    const classes = await db.query._class.findMany();
 
     return (
         <main className="">

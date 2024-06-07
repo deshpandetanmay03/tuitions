@@ -4,7 +4,8 @@
 - [X] scaffold basic ui
 - [X] Tidy up UI
 - [X] set up db
-- [ ] attach db to app
+- [X] attach db to app
+- [X] add sql schema
 - [ ] add auth
 - [ ] create forms
 - [ ] Error management
