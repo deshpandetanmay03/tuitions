@@ -6,7 +6,7 @@
 - [X] set up db
 - [X] attach db to app
 - [X] add sql schema
-- [ ] add auth
+- [X] add auth
 - [ ] create forms
 - [ ] Error management
 - [ ] Routing

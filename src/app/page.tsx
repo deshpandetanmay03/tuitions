@@ -1,20 +1,12 @@
 import { db } from "~/server/db";
 
-export const dynamic = "force-dynamic";
-
-export default async function HomePage() {
-
-    const classes = await db.query._class.findMany();
+export default function HomePage() {
 
     return (
-        <main className="">
-        <div className="flex flex-wrap">
-        {classes.map((classData) => (
-            <div className="w-1/2 p-4" key={classData.id}>
-            <div className="text-xl font-bold">{classData.name}</div>
-            <div className="text-sm">{classData.start_h}:{classData.start_m} - {classData.end_h}:{classData.end_m}</div>
-            </div>
-        ))}
+        <main className="flex flex-col items-center justify-center h-screen">
+        <div className="text-center">
+        <h1 className="text-4xl font-bold">Tuitions</h1>
+        <p className="text-xl">Welcome to the Tuitions app</p>
         </div>
         </main>
     );
