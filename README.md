@@ -2,7 +2,7 @@
 ## TODO
 - [X] deploy
 - [X] scaffold basic ui
-- [ ] Tidy up UI
+- [X] Tidy up UI
 - [ ] set up db
 - [ ] attach db to app
 - [ ] add auth
