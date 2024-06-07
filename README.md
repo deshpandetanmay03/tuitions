@@ -3,7 +3,7 @@
 - [X] deploy
 - [X] scaffold basic ui
 - [X] Tidy up UI
-- [ ] set up db
+- [X] set up db
 - [ ] attach db to app
 - [ ] add auth
 - [ ] create forms
