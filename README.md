@@ -7,7 +7,8 @@
 - [X] attach db to app
 - [X] add sql schema
 - [X] add auth
-- [ ] create forms
+- [X] create forms
+- [ ] add Student fees features
 - [ ] Error management
 - [ ] Routing
 - [ ] Delete
