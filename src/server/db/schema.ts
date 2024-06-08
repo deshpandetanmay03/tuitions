@@ -31,12 +31,12 @@ export const _class = createTable(
     })
 );
 
-export const students = createTable(
+export const student = createTable(
     "student",
     {
         id: serial("id").primaryKey(),
         name: varchar("name", { length: 256 }),
-        class_id: integer("class_id").references("class.id").array(),
+        class_id: integer("class_id").references(() => _class.id),
         paid: integer("paid"),
         payments: integer("payments").array(),
     },
@@ -51,8 +51,8 @@ export const attendance = createTable(
     "attendance",
     {
         id: serial("id").primaryKey(),
-        student_id: integer("student_id").references("student.id").array(),
-        class_id: integer("class_id").references("class.id").array(),
+        student_id: integer("student_id").references(() => student.id),
+        class_id: integer("class_id").references(() => _class.id),
         date: varchar("date", { length: 256 }),
     },
     (table) => ({
