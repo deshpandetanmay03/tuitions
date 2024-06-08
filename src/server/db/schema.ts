@@ -18,9 +18,10 @@ export const _class = createTable(
         start_m: integer("start_m"),
         end_h: integer("end_h"),
         end_m: integer("end_m"),
-        days: integer("days").array(),
+        days: varchar("days"),
         start_date: varchar("start_date", { length: 256 }),
         end_date: varchar("end_date", { length: 256 }),
+        user_id: varchar("user_id"),
     },
     (table) => ({
         class_nameIndex: index("class_name_idx").on(table.name),
@@ -35,7 +36,7 @@ export const students = createTable(
     {
         id: serial("id").primaryKey(),
         name: varchar("name", { length: 256 }),
-        class_id: integer("class_id").references("classes.id").array(),
+        class_id: integer("class_id").references("class.id").array(),
         paid: integer("paid"),
         payments: integer("payments").array(),
     },
@@ -50,8 +51,8 @@ export const attendance = createTable(
     "attendance",
     {
         id: serial("id").primaryKey(),
-        student_id: integer("student_id").references("students.id").array(),
-        class_id: integer("class_id").references("classes.id").array(),
+        student_id: integer("student_id").references("student.id").array(),
+        class_id: integer("class_id").references("class.id").array(),
         date: varchar("date", { length: 256 }),
     },
     (table) => ({
