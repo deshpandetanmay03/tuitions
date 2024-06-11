@@ -65,3 +65,47 @@ export async function get_my_students() {
 
     return studentsList;
 }
+
+export async function get_class(classId) {
+
+    const user = auth();
+
+    if (!user.userId) throw new Error("You must be logged in to view your students");
+
+    if (!classId) throw new Error("You must provide a class id");
+
+    const classData = await db.query._class.findFirst({
+        where: ( model, { eq }) => eq(model.id, classId),
+    });
+
+    if (!classData) throw new Error("Class not found");
+
+    if (classData.user_id !== user.userId) throw new Error("You are not authorized to view this class");
+
+    return classData;
+}
+
+export async function get_student(studentId) {
+
+    const user = auth();
+
+    if (!user.userId) throw new Error("You must be logged in to view your students");
+
+    if (!studentId) throw new Error("You must provide a student id");
+
+    const studentData = await db.query.student.findFirst({
+        where: ( model, { eq }) => eq(model.id, studentId),
+    });
+
+    if (!studentData) throw new Error("Student not found");
+
+    const classData = await db.query._class.findFirst({
+        where: ( model, { eq }) => eq(model.id, studentData.class_id),
+    });
+
+    if (!classData) throw new Error("Class not found");
+
+    if (classData.user_id !== user.userId) throw new Error("You are not authorized to view this student");
+
+    return studentData;
+}

@@ -1,4 +1,5 @@
 import { get_my_students } from "~/server/queries";
+import Link from "next/link";
 
 export default async function ViewClassPage() {
     const students = await get_my_students();
@@ -9,12 +10,12 @@ export default async function ViewClassPage() {
                 <div className="flex flex-wrap w-screen gap-4">
                     {students.map((studentData) => (
                         <div className="w-1/4 p-4 border-2 border-gray-200" key={studentData.id}>
-                            <a href={`/classes/view/${studentData.id}`}>
+                            <Link href={`/students/view/${studentData.id}`}>
                                 <div className="text-xl font-bold">
                                     {studentData.name}
                                 </div>
                                 <div className="text-sm">{studentData.class_id}</div>
-                            </a>
+                            </Link>
                         </div>
                     ))}
                 </div>
