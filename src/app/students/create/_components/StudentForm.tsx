@@ -53,8 +53,7 @@ export function StudentForm({ classes }) {
                                 <ErrorMessage className="text-sm text-red-500" name="name" component="div" />
                             </div>
 
-                            <div className="flex gap-4">
-                                <label className="text-sm font-bold">Class -</label>
+                            <div className="flex gap-4 max-w-[500px]">
                                 {classes.map((classData) => (
                                     <div className="flex gap-4" key={classData.id}>
                                         <Field
@@ -64,7 +63,9 @@ export function StudentForm({ classes }) {
                                             options={classes.map((classData) => ({ label: classData.name, value: classData.id }))}
                                             placeholder="Class"
                                         />
-                                        <label className="gap-4 items-center">class name - {classData.name}</label>
+                                        <label className="gap-4 items-center self-center">
+                                            {classData.name}
+                                        </label>
                                     </div>
                                 ))}
                                 <ErrorMessage className="text-sm text-red-500" name="class_id" component="div" />

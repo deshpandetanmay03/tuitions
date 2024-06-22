@@ -12,7 +12,7 @@ export async function POST(req: Request) {
             payments: [],
         };
 
-        let studentId = create_my_student(studentData);
+        let studentId = await create_my_student(studentData);
         if (studentId) {
             return NextResponse.json({ message: "Student created" }, { status: 201 });
         } else {
