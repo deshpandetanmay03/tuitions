@@ -1,5 +1,5 @@
 import { get_class } from "~/server/queries";
-import { Modal } from "~/global_components/modal";
+import { Modal } from "~/components/modal";
 export default async function ClassModalPage({
     params: { id: classId },
 }: {

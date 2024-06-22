@@ -1,9 +1,7 @@
 import "~/styles/globals.css";
-
+import { Toaster } from "~/components/ui/sonner";
 import { Navbar } from "./_components/navbar";
-
 import { ClerkProvider } from "@clerk/nextjs";
-
 import { GeistSans } from "geist/font/sans";
 
 export const metadata = {
@@ -27,6 +25,7 @@ export default function RootLayout({
                     {children}
                     {modal}
                     <div id="modal-root"></div>
+                    <Toaster />
                 </body>
             </html>
         </ClerkProvider>

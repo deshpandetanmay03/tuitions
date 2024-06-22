@@ -9,6 +9,7 @@
 - [X] add auth
 - [X] create forms
 - [X] add Student fees features
+- [X] chadui
 - [ ] Error management
 - [ ] Routing
 - [ ] Delete

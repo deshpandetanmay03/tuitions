@@ -1,5 +1,5 @@
 import { get_student } from "~/server/queries";
-import { Modal } from "~/global_components/modal";
+import { Modal } from "~/components/modal";
 import Link from "next/link";
 export default async function ClassModalPage({
     params: { id: studentId },

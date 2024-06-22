@@ -2,6 +2,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const daysOfWeek = [
     { id: 1, name: 'Monday' },
@@ -46,6 +47,7 @@ export function ClassForm() {
                     return errors;
                 }}
                 onSubmit={async (values, { setSubmitting }) => {
+                    toast("Creating class", { duration: 3000 });
                     values.days = values.days.map((day) => parseInt(day));
                     const res = await fetch("/api/create_class", {
                         method: "POST",
@@ -55,9 +57,11 @@ export function ClassForm() {
                         body: JSON.stringify(values),
                     });
                     if (res.ok) {
+                        toast("Class created", { duration: 3000 });
                         router.push("/classes/view");
                         setSubmitting(false);
                     } else {
+                        toast("Error creating class", { duration: 3000 });
                         console.log("res.json()");
                     }
                 }}

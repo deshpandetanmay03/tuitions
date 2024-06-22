@@ -2,6 +2,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export function StudentForm({ classes }) {
     const router = useRouter();
@@ -12,6 +13,7 @@ export function StudentForm({ classes }) {
                 initialValues={{
                     name: "",
                     class_id: undefined,
+                    amount: 0,
                 }}
                 validate={(values) => {
                     const errors = {};
@@ -24,6 +26,7 @@ export function StudentForm({ classes }) {
                     return errors;
                 }}
                 onSubmit={async (values, { setSubmitting }) => {
+                    toast("Creating student", { duration: 3000 });
                     values.class_id = parseInt(values.class_id);
                     const res = await fetch("/api/create_student", {
                         method: "POST",
@@ -33,9 +36,11 @@ export function StudentForm({ classes }) {
                         body: JSON.stringify(values),
                     });
                     if (res.ok) {
+                        toast("Student created", { duration: 3000 });
                         setSubmitting(false);
                         router.push("/students/view");
                     } else {
+                        toast("Error creating student", { duration: 3000 });
                         console.log("res.json()");
                     }
                 }}
@@ -69,6 +74,16 @@ export function StudentForm({ classes }) {
                                     </div>
                                 ))}
                                 <ErrorMessage className="text-sm text-red-500" name="class_id" component="div" />
+                            </div>
+
+                            <div className="flex gap-4">
+                                <label className="text-sm font-bold">Amount -</label>
+                                <Field
+                                    name="amount"
+                                    type="number"
+                                    placeholder="Amount"
+                                />
+                                <ErrorMessage className="text-sm text-red-500" name="amount" component="div" />
                             </div>
 
                             <button
