@@ -10,8 +10,7 @@
 - [X] create forms
 - [X] add Student fees features
 - [X] chadui
-- [ ] deleting classes, students, payments
-- [ ] Rate limiting
+- [X] Rate limiting
 
 # Tutorial
 following this video - https://www.youtube.com/watch?v=d5x0JCZbAJs by t3.gg
