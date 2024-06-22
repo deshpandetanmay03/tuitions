@@ -46,18 +46,3 @@ export const student = createTable(
         student_idIndex: index("student_id_idx").on(table.id),
     })
 );
-
-export const attendance = createTable(
-    "attendance",
-    {
-        id: serial("id").primaryKey(),
-        student_id: integer("student_id").references(() => student.id),
-        class_id: integer("class_id").references(() => _class.id),
-        date: varchar("date", { length: 256 }),
-    },
-    (table) => ({
-        attenndance_studentIdIndex: index("attenndance_student_id_idx").on(table.student_id),
-        attenndance_classIdIndex: index("attenndance_class_id_idx").on(table.class_id),
-        attenndance_dateIndex: index("attenndance_date_idx").on(table.date),
-    })
-);

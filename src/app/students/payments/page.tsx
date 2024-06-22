@@ -5,14 +5,18 @@ export default async function StudentsPaymentsPage() {
     const currentMonth = date.getMonth() + 1;
     const currentYear = date.getFullYear();
     const all_students = await get_my_students();
-    const students = all_students.filter((student) => {
-        const _class = get_class(student.class_id);
-        if (_class.end_year < currentYear)
-            return false;
-        if (_class.end_year === currentYear && _class.end_month < currentMonth)
-            return false;
-        return true;
-    });
+    const students = await Promise.all(
+        all_students.map( async (student) => ({
+            student,
+            _class: await get_class(student.class_id)
+        }))
+    ).then(student_class =>
+            student_class.filter(({ student, _class }) => {
+                if (_class.end_year < currentYear) return false;
+                if (_class.end_year === currentYear && _class.endmonth < currentMonth) return false;
+                return true;
+            })
+        );
     return (
         <main className="">
             <h1 className="text-4xl font-bold text-center">Students Payments</h1>

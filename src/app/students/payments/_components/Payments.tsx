@@ -1,6 +1,7 @@
 "use client";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useRouter } from "next/navigation";
+import { remaining } from "~/tools/payments";
 export default function Payments({ students }) {
     const router = useRouter();
     return (
@@ -48,15 +49,17 @@ export default function Payments({ students }) {
                         <div className="flex flex-col gap-4">
                             <div className="flex gap-4">
                                 { students.map((studentData) => (
-                                    <div className="flex gap-4" key={studentData.id}>
+                                    <div className="flex gap-4" key={studentData.student.id}>
                                         <Field
                                             name="student_id"
-                                            value={studentData.id.toString()}
+                                            value={studentData.student.id.toString()}
                                             type="radio"
-                                            options={students.map((studentData) => ({ label: studentData.name, value: studentData.id }))}
                                             placeholder="Student"
                                         />
-                                        <label className="gap-4 items-center">{studentData.name}</label>
+                                        <label className="gap-4 items-center">
+                                            {studentData.student.name}
+                                            ({remaining(studentData.student, studentData._class)} remaining)
+                                        </label>
                                     </div>
                                 ))}
                                 <ErrorMessage className="text-sm text-red-500" name="student_id" component="div" />
