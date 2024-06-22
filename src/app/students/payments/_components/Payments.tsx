@@ -37,7 +37,7 @@ export default function Payments({ students }) {
                     });
                     if (res.ok) {
                         setSubmitting(false);
-                        router.push("/students/payments");
+                        router.push("/students");
                     } else {
                         console.log("res.json()");
                     }
@@ -49,7 +49,6 @@ export default function Payments({ students }) {
                             <div className="flex gap-4">
                                 { students.map((studentData) => (
                                     <div className="flex gap-4" key={studentData.id}>
-                                        <label className="text-sm font-bold">Student -</label>
                                         <Field
                                             name="student_id"
                                             value={studentData.id.toString()}
@@ -57,7 +56,7 @@ export default function Payments({ students }) {
                                             options={students.map((studentData) => ({ label: studentData.name, value: studentData.id }))}
                                             placeholder="Student"
                                         />
-                                        <label className="gap-4 items-center">student name - {studentData.name}</label>
+                                        <label className="gap-4 items-center">{studentData.name}</label>
                                     </div>
                                 ))}
                                 <ErrorMessage className="text-sm text-red-500" name="student_id" component="div" />

@@ -12,7 +12,7 @@ export default async function StudentsPaymentsPage() {
         if (_class.end_year === currentYear && _class.end_month < currentMonth)
             return false;
         return true;
-    }
+    });
     return (
         <main className="">
             <h1 className="text-4xl font-bold text-center">Students Payments</h1>

@@ -2,6 +2,7 @@ import { db } from "~/server/db";
 import 'server-only';
 import { _class, student } from "~/server/db/schema";
 import { auth } from "@clerk/nextjs/server";
+import { eq } from "drizzle-orm";
 
 export async function get_my_classes() {
 
@@ -109,3 +110,55 @@ export async function get_student(studentId) {
 
     return studentData;
 }
+
+export async function add_payment(studentId, amount) {
+
+    const user = auth();
+
+    if (!user.userId) throw new Error("You must be logged in to add a payment");
+
+    const studentData = await get_student(studentId);
+
+    const response = await db.update(student)
+        .set({ paid: studentData.paid + amount })
+        .where(eq(student.id, studentId));
+
+    return response;
+}
+
+export async function get_student_class(studentId) {
+
+    const user = auth();
+
+    if (!user.userId) throw new Error("You must be logged in to view your students");
+
+    if (!studentId) throw new Error("You must provide a student id");
+
+    const studentData = await db.query.student.findFirst({
+        where: ( model, { eq }) => eq(model.id, studentId),
+    });
+
+    if (!studentData) throw new Error("Student not found");
+
+    const classData = await db.query._class.findFirst({
+        where: ( model, { eq }) => eq(model.id, studentData.class_id),
+    });
+
+    if (!classData) throw new Error("Class not found");
+
+    if (classData.user_id !== user.userId) throw new Error("You are not authorized to view this student");
+
+    return classData;
+}
+
+
+
+
+
+
+
+
+
+
+
+
