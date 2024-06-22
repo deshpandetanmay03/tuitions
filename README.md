@@ -10,10 +10,7 @@
 - [X] create forms
 - [X] add Student fees features
 - [X] chadui
-- [ ] Error management
-- [ ] Routing
-- [ ] Delete
-- [ ] Analytics
+- [ ] deleting classes, students, payments
 - [ ] Rate limiting
 
 # Tutorial
