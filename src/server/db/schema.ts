@@ -38,7 +38,7 @@ export const student = createTable(
         name: varchar("name", { length: 256 }),
         class_id: integer("class_id").references(() => _class.id),
         paid: integer("paid"),
-        payments: integer("payments").array(),
+        amount: integer("amount"),
     },
     (table) => ({
         student_classIdIndex: index("student_class_id_idx").on(table.class_id),

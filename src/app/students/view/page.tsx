@@ -14,7 +14,7 @@ export default async function ViewClassPage() {
                                 <div className="text-xl font-bold">
                                     {studentData.name}
                                 </div>
-                                <div className="text-sm">{studentData.class_id}</div>
+                                <div className="text-sm">class {studentData.class_id}</div>
                             </Link>
                         </div>
                     ))}

@@ -27,14 +27,6 @@ export default async function ClassModalPage({
                                 <span className="text-sm">Paid till date:</span>
                                 {student.paid}
                             </div>
-                            <div className="flex gap-4 items-center">
-                                <span className="text-sm">Payments:</span>
-                                { student.payments.map((index, payment) => (
-                                    <div key={index}>
-                                        {payment}
-                                    </div>
-                                ))}
-                            </div>
                         </div>
                     </div>
                 </div>
