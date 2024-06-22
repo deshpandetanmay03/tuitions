@@ -16,9 +16,9 @@ export async function POST(req: Request) {
             end_date,
         };
 
-        let classId = create_my_class(classData);
+        let classId = await create_my_class(classData);
         if (classId) {
-            return NextResponse.json({ message: "Class created" }, { status: 201 });
+            return NextResponse.json({ message: "Class created" + classId }, { status: 201 });
         } else {
             return NextResponse.json({ message: "Class not created" }, { status: 400 });
         }
