@@ -5,5 +5,5 @@ export function remaining(student, _class) {
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
     const months = 12 * (year - start_year) + month - start_month;
-    return student.amount * months - student.paid;
+    return Math.max(student.amount * months - student.paid, 0);
 }

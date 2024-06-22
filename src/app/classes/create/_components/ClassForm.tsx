@@ -58,7 +58,7 @@ export function ClassForm() {
                     });
                     if (res.ok) {
                         toast("Class created", { duration: 3000 });
-                        router.push("/classes/view");
+                        router.push("/classes");
                         setSubmitting(false);
                     } else {
                         toast("Error creating class", { duration: 3000 });

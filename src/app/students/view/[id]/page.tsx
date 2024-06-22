@@ -1,6 +1,7 @@
-import { get_student } from "~/server/queries";
+import { get_student, get_class } from "~/server/queries";
 import { Modal } from "~/components/modal";
 import Link from "next/link";
+import { remaining } from "~/tools/payments";
 export default async function ClassModalPage({
     params: { id: studentId },
 }: {
@@ -8,6 +9,7 @@ export default async function ClassModalPage({
     }
 ) {
     const student = await get_student(studentId);
+    const _class = await get_class(student.class_id);
     return (
         <div>
             <div className="text-center">
@@ -26,6 +28,10 @@ export default async function ClassModalPage({
                             <div className="flex gap-4 items-center">
                                 <span className="text-sm">Paid till date:</span>
                                 {student.paid}
+                            </div>
+                            <div className="flex gap-4 items-center">
+                                <span className="text-sm">Remaining:</span>
+                                {remaining(student, _class)}
                             </div>
                         </div>
                     </div>

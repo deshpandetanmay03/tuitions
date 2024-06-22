@@ -38,7 +38,7 @@ export function StudentForm({ classes }) {
                     if (res.ok) {
                         toast("Student created", { duration: 3000 });
                         setSubmitting(false);
-                        router.push("/students/view");
+                        router.push("/students");
                     } else {
                         toast("Error creating student", { duration: 3000 });
                         console.log("res.json()");
