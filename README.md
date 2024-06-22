@@ -8,7 +8,7 @@
 - [X] add sql schema
 - [X] add auth
 - [X] create forms
-- [ ] add Student fees features
+- [X] add Student fees features
 - [ ] Error management
 - [ ] Routing
 - [ ] Delete
